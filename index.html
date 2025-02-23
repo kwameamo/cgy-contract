@@ -8,76 +8,175 @@
         body {
             font-family: 'Space Mono', monospace;
             background-color: #F4E69F;
-            margin: 20px;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .contract-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: auto;
+            padding: 30px;
+            max-width: 900px;
+            width: 90%;
+            background: #F4E69F;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
         h1, h2 {
             font-family: 'Roboto', sans-serif;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 24px;
+            text-align: center;
         }
-        p, label {
-            font-size: 11px;
-            line-height: 1.5;
+        p, label, ul li {
+            font-size: 14px;
+            line-height: 1.8;
         }
         input, select {
             width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #000;
+            border-radius: 5px;
         }
         button {
             display: block;
             width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color: #000;
             color: white;
             border: none;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #444;
         }
     </style>
     <script>
         function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
             const clientName = document.getElementById("client-name").value;
+            const contractDate = document.getElementById("contract-date").value;
+            const clientSignature = document.getElementById("client-signature").value;
+            
+            doc.text("CGY T-Shirt Design Contract", 20, 20);
+            doc.text(`Client Name: ${clientName}`, 20, 30);
+            doc.text(`Date: ${contractDate}`, 20, 40);
+            doc.text(`Signature: ${clientSignature}`, 20, 50);
+            
+            doc.save("CGY_TShirt_Contract.pdf");
+            
             alert("A PDF copy will be generated and sent to curiographicsyard@gmail.com.");
             window.location.href = `mailto:curiographicsyard@gmail.com?subject=New Contract signed by ${clientName}`;
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="contract-container">
         <h1>Contract</h1>
-        <p><strong>Website:</strong> <a href="https://www.curiogfxyard.work">www.curiogfxyard.work</a></p>
-        <p><strong>Email:</strong> curiographicsyard@gmail.com</p>
         
         <h2>Introduction</h2>
-        <p>This T-Shirt Design Client Agreement ("Agreement") is made and entered into as of <input type="date" id="contract-date">, by and between CurioGraphicsYard ("Designer") and <input type="text" id="client-name" placeholder="Client Name"> ("Client"). This Agreement outlines the terms and conditions governing the t-shirt design services provided by CurioGraphicsYard.</p>
+        <p>This T-Shirt Design Client Agreement ("Agreement") is made and entered into as of <input type="date" id="contract-date">, by and between CurioGraphicsYard ("Designer") and <input type="text" id="client-name" placeholder="Client Name"> ("Client"). This Agreement outlines the terms and conditions governing the t-
+shirt design services provided by CurioGraphicsYard. It ensures clear expectations regarding scope, pricing, revisions, ownership, and other essential details. By signing this Agreement, both parties acknowledge their commitment to a smooth and professional design process.</p>
         
-        <h2>Scope of Work</h2>
+        <h2>1.    Scope of Work</h2>
         <ul>
-            <li>Designer agrees to create t-shirt design(s) as per the specifications provided by the Client.</li>
+            <li>Designer agrees to create t-shirt design(s) as per the specifications provided by the Client</li>
             <li>The number of designs and specific requirements will be detailed in the attached project proposal.</li>
         </ul>
+
+        <h2>2.    Pricing Plans</h2>
+        <ul>
+            <li>The Client may choose from the following three pricing plans:</li>
+            <li>Basic Plan</li>
+            <ul>
+                <li>Price: $50 USD (or equivalent in Client’s currency</li>
+                <li>Includes3y</li>
+                    <ul>
+                        <li>One original t-shirt design</li>
+                        <li>Up to 2 minor revisionE</li>
+                        <li>Final design delivered in high-resolution PNG and vector formats</li>
+                    </ul>
+            </ul>
+        </ul>
         
-        <h2>Pricing Plans</h2>
+        <h2>3.    Choose Plan</h2>
+        <p>The Client has selected the following plan:</p>
         <label><input type="radio" name="plan" value="Basic"> Basic Plan - $50 USD</label><br>
         <label><input type="radio" name="plan" value="Standard"> Standard Plan - $80 USD</label><br>
         <label><input type="radio" name="plan" value="Premium"> Premium Plan - $250 USD</label>
         
-        <h2>Payment Terms</h2>
-        <p>Client agrees to pay a non-refundable deposit of 50% upon signing this Agreement, with the remaining balance payable upon final delivery.</p>
+        <h2>4.    Payment Terms</h2>
+        <ul>
+            <li>Client agrees to pay Designer the fee associated with the selected plan as outlined above.</li>
+            <li>A non-refundable deposit of 50% is due upon signing this Agreement, with the remaining balance payable upon final delivery of the design(s).</li>
+        </ul>
+
+        <h2>5.    Revisions and Rejection Policy</h2>
+        <ul>
+            <li>Revision Allowance:</li>
+            <ul>
+                <li>Basic Plan: Includes up to 2 minor revisions.</li>
+                <li>Standard Plan: Includes up to 2 major revisions and 3 minor revisions.</li>
+                <li>Premium Plan: Includes unlimited major and minor revisions.</li>
+            </ul>
+
+            <li>Definitions:</li>
+            <ul>
+                <li>Major Revision: Significant changes that alter the core concept or elements
+of the design.</li>
+                <li>Minor Revision: Includes up to 2 major revisions and 3 minor revisions.</li>
+                <li>Premium Plan: Small adjustments that do not significantly change the overall design, such as colour tweaks or slight modifications.</li>
+            </ul>
+        </ul>
+
+            <li>Rejection Clause:</li>
+            <ul>
+                <li>If the Client is not satisfied with the initial design concept, they must provide detailed feedback specifying the aspects they wish to change.</li>
+                <li>Revisions will be made in accordance with the plan’s revision allowance.</li>
+                <li>If, after all included revisions have been exhausted, the Client still rejects the design, any additional revisions will incur an extra fee of $10 USD per minor revision and $25 USD per major revision</li>
+            </ul>
+        </ul>
+
+        <h2>6.    Delivery Timeline</h2>
+        <ul>
+            <li>Designer will deliver initial design concepts within [X] business days upon receipt of the deposit and all necessary materials from the Client.</li>
+            <li>Revisions will be completed within [Y] business days after receiving feedback from the Client.</li>
+            <li>For Premium Plan clients, priority turnaround times will be discussed and agreed upon separately.</li>
+        </ul>
+
+        <h2>7.    Ownership and Rights</h2>
+        <ul>
+            <li>Upon full payment, the Client will obtain exclusive rights to the final design(s).</li>
+            <li>Designer retains the right to use the designs for portfolio and promotional purposes unless otherwise agreed in writing.</li>
+        </ul>
+
+        <h2>8.    Confidentiality</h2>
+        <ul>
+            <li>Both parties agree to keep confidential any proprietary information disclosed during the project.</li>
+        </ul>
+
+        <h2>9.    Termination</h2>
+        <ul>
+            <li>Either party may terminate this Agreement with written notice.</li>
+            <li>In the event of termination, Designer retains the deposit, and the Client will be invoiced for any work completed beyond the deposit amount.</li>
+        </ul>
+
+        <h2>10.    Governing Law</h2>
+        <ul>
+            <li>This Agreement shall be governed by and construed in accordance with the laws of the Republic of Ghana.</li>
+        </ul>
         
-        <h2>Signatures</h2>
+        
+        <h2>11.    Signatures</h2>
+        <p>By signing below, both parties acknowledge and agree to the terms outlined in this Agreement.</p>
         <p>Client Signature: <input type="text" id="client-signature" placeholder="Client Signature"></p>
         <p>Designer Signature: CurioGraphicsYard</p>
         
