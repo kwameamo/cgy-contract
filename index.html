@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGY T-Shirt Design Contract</title>
+    <style>
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #F4E69F;
+            margin: 20px;
+            padding: 20px;
+        }
+        .contract-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        p, label {
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function generatePDF() {
+            const clientName = document.getElementById("client-name").value;
+            alert("A PDF copy will be generated and sent to curiographicsyard@gmail.com.");
+            window.location.href = `mailto:curiographicsyard@gmail.com?subject=New Contract signed by ${clientName}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="contract-container">
+        <h1>Contract</h1>
+        <p><strong>Website:</strong> <a href="https://www.curiogfxyard.work">www.curiogfxyard.work</a></p>
+        <p><strong>Email:</strong> curiographicsyard@gmail.com</p>
+        
+        <h2>Introduction</h2>
+        <p>This T-Shirt Design Client Agreement ("Agreement") is made and entered into as of <input type="date" id="contract-date">, by and between CurioGraphicsYard ("Designer") and <input type="text" id="client-name" placeholder="Client Name"> ("Client"). This Agreement outlines the terms and conditions governing the t-shirt design services provided by CurioGraphicsYard.</p>
+        
+        <h2>Scope of Work</h2>
+        <ul>
+            <li>Designer agrees to create t-shirt design(s) as per the specifications provided by the Client.</li>
+            <li>The number of designs and specific requirements will be detailed in the attached project proposal.</li>
+        </ul>
+        
+        <h2>Pricing Plans</h2>
+        <label><input type="radio" name="plan" value="Basic"> Basic Plan - $50 USD</label><br>
+        <label><input type="radio" name="plan" value="Standard"> Standard Plan - $80 USD</label><br>
+        <label><input type="radio" name="plan" value="Premium"> Premium Plan - $250 USD</label>
+        
+        <h2>Payment Terms</h2>
+        <p>Client agrees to pay a non-refundable deposit of 50% upon signing this Agreement, with the remaining balance payable upon final delivery.</p>
+        
+        <h2>Signatures</h2>
+        <p>Client Signature: <input type="text" id="client-signature" placeholder="Client Signature"></p>
+        <p>Designer Signature: CurioGraphicsYard</p>
+        
+        <button onclick="generatePDF()">Submit & Download PDF</button>
+    </div>
+</body>
+</html>
